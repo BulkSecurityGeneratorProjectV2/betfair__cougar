@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URI;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -122,7 +123,7 @@ public class XMLUtils {
         @Override
         public Result createOutput(String namespaceUri, String suggestedFileName)
                 throws IOException {
-            File schemaFile = File.createTempFile(suggestedFileName, "xsd");
+            File schemaFile = Files.createTempFile(suggestedFileName, "xsd").toFile();
             result.setSystemId(schemaFile.toURI().toString());
             return result;
         }
